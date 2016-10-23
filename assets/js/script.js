@@ -16,7 +16,9 @@ walletModule.controller('operationsCtrl', function($scope){
 	
 	
 	/* Reset the wallet */
-	$scope.resetWallet=function(){$scope.reset()};
+	$scope.resetWallet=function(){
+		localStorage.clear();location.reload();
+	};
 	
 	/* Receives the operation sent from the form (add or remove) and calls the appropiate function */
 	$scope.updateWallet=function(){
