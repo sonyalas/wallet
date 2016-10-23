@@ -4,7 +4,16 @@ walletModule.controller('operationsCtrl', function($scope){
 	$scope.totalAmount=0;
 	$scope.amount=0;
 	$scope.operation="Add";
-	$scope.historial=[];
+	if(localStorage.getItem('historial')!=null){
+		$scope.historial=JSON.parse(localStorage.getItem('historial'));
+		for (var i=0; i<$scope.historial.length; i++){
+			if($scope.historial[i].operation=='Add'){$scope.totalAmount+=$scope.historial[i].amount;}
+			else if($scope.historial[i].operation=='Remove'){$scope.totalAmount-=$scope.historial[i].amount;}
+			if($scope.totalAmount<0){$scope.totalAmount=0;}
+		}
+	}
+	else{$scope.historial=[];}
+	
 	
 	/* Reset the wallet */
 	$scope.resetWallet=function(){$scope.reset()};
@@ -16,5 +25,7 @@ walletModule.controller('operationsCtrl', function($scope){
 		else if($scope.operation=="Remove"){$scope.totalAmount-=$scope.amount;}
 		//totalAmount can't be less than 0
 		if($scope.totalAmount<0){$scope.totalAmount=0;}
+		localStorage.setItem('historial', JSON.stringify($scope.historial));
+		console.log(JSON.parse(localStorage.getItem('historial')));
 	};
 })
