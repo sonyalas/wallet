@@ -1,1 +1,3 @@
-
+ul li button{border:none; background-color:#FFF; display: block; padding: 10px 15px; position: relative; color:#337ab7;}
+ul li button:hover{text-decoration: underline;}
+.nav li a:hover{background-color: white;text-decoration: underline;}
