@@ -18,7 +18,7 @@
 		      	<li><a href="https://github.com/sonyalas/wallet" target="_blank">View Source</a></li>
 			</ul>
 		</nav>
-
+		<h2>Total amount: {{ totalAmount | number:2}}€</h2>
 		<form class="form-inline" ng-submit="updateWallet()"> 
 			<div class="form-group">
 			    <label class="sr-only" for="exampleInputAmount">Amount</label>
@@ -35,12 +35,11 @@
 		</form>
 		<div class="results">
 			<table class="table">
-				<tr ng-repeat="l in historial  track by $index">
+				<tr ng-repeat="l in historial track by $index ">
 				  <td><span ng-show="l.operation=='Remove'">-</span>{{l.amount}}€</td>
 				  <td>{{l.date | date: 'dd/MM/yyyy HH:mm'}}</td>
 				</tr>
-			</table>
-			<p>Total amount: {{ totalAmount | number:2}}€</p>
+			</table>			
 		</div>
 	</div>
 	<script src="./assets/js/jquery-3.1.1.min.js"></script>
