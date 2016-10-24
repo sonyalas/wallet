@@ -6,7 +6,7 @@ walletModule.controller('operationsCtrl', function($scope){
 	// Initialize the list historial and the totalAmount
 	if(localStorage.getItem('historial')!=null){$scope.historial=JSON.parse(localStorage.getItem('historial'));}
 	else{$scope.historial=[];}
-	if(localStorage.getItem('totalAmount')!=null){$scope.totalAmount=localStorage.getItem('totalAmount');}
+	if(localStorage.getItem('totalAmount')!=null){$scope.totalAmount=parseFloat(localStorage.getItem('totalAmount'));}
 	else{$scope.totalAmount=0;}
 	
 	/* Reset the wallet */
