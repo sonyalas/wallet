@@ -1,19 +1,13 @@
 var walletModule = angular.module('wallet', ['ngRoute']);
 
 walletModule.controller('operationsCtrl', function($scope){
-	$scope.totalAmount=0;
 	$scope.amount=0;
 	$scope.operation="Add";
-	if(localStorage.getItem('historial')!=null){
-		$scope.historial=JSON.parse(localStorage.getItem('historial'));
-		console.log(localStorage.getItem('historial'));
-		for (var i=0; i<$scope.historial.length; i++){
-			if($scope.historial[i].operation=='Add'){$scope.totalAmount+=$scope.historial[i].amount;}
-			else if($scope.historial[i].operation=='Remove'){$scope.totalAmount-=($scope.historial[i].amount).toFixed(2);}
-			if($scope.totalAmount<0){$scope.totalAmount=0;}
-		}
-	}
+	// Initialize the list historial and the totalAmount
+	if(localStorage.getItem('historial')!=null){$scope.historial=JSON.parse(localStorage.getItem('historial'));}
 	else{$scope.historial=[];}
+	if(localStorage.getItem('totalAmount')!=null){$scope.totalAmount=localStorage.getItem('totalAmount');}
+	else{$scope.totalAmount=0;}
 	
 	/* Reset the wallet */
 	$scope.resetWallet=function(){
@@ -28,5 +22,6 @@ walletModule.controller('operationsCtrl', function($scope){
 		//totalAmount can't be less than 0
 		if($scope.totalAmount<0){$scope.totalAmount=0;}
 		localStorage.setItem('historial', JSON.stringify($scope.historial));
+		localStorage.setItem('totalAmount',$scope.totalAmount);
 	};
 })
