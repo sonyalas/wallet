@@ -3,8 +3,10 @@ Wallet application which allows you to add and remove amounts to and from your w
 should then be a grand total displaying how much money is currently in the wallet. There will be a responsive header with three menu items: Home, Reset, View Source (link to GitHub repo).
 
 Specifications
+
 It’s up to you to decide the currency of the wallet. This should be displayed next to each item
 and the grand total.
+
 1. The input(s) to add/remove amounts should have error checking and reporting
 2. The wallet data should persist between page refreshes for the same user, until they
 click “Reset” in the menu. It is up to you to choose the persistence method.
